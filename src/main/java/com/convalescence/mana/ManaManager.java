@@ -12,4 +12,8 @@ public class ManaManager {
         this.manaLevel = Math.min(mana + this.manaLevel, ManaConstants.MANA_MAX_LEVEL);
     }
 
+    public void consume(int mana) {
+        this.manaLevel = Math.max(this.manaLevel - mana, 0);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.convalescence;
 
+import com.convalescence.mana.ManaManager;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.registry.Registries;
@@ -20,7 +21,6 @@ public class Convalescence implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Hello Fabric world!");
-
 
 	}
 }
