@@ -3,11 +3,9 @@ package com.convalescence.mana;
 public class ManaManager {
 
     private int manaLevel;
-    private int prevManaLevel;
 
     public ManaManager() {
-        this.prevManaLevel = ManaConstants.MANA_MAX_LEVEL;
-        this.manaLevel = this.prevManaLevel;
+        this.manaLevel = ManaConstants.MANA_MAX_LEVEL;
     }
 
     public void add(int mana) {
