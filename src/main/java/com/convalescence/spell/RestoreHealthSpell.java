@@ -1,5 +1,7 @@
-package com.convalescence.magic;
+package com.convalescence.spell;
 
+import com.convalescence.mana.ManaManager;
+import com.convalescence.mana.PlayerManaInterface;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
@@ -16,22 +18,14 @@ public class RestoreHealthSpell extends Spell {
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 
-        if (world.isClient) {
-            return TypedActionResult.pass(user.getStackInHand(hand));
-        }
+        ManaManager manaManager = ((PlayerManaInterface) user).getManaManager();
 
-        // Cast this spell.
-        float maxHealth = user.getMaxHealth();
-        float currentHealth = user.getHealth();
-
-        if (currentHealth < maxHealth) {
-            // Restore health.
+        if (user.getHealth() < user.getMaxHealth() && manaManager.canAffordCost(this.DEFAULT_MANA_COST)) {
+            manaManager.consumeMana(this.DEFAULT_MANA_COST);
             user.heal(RESTORE_HEALTH_PER_TICK);
-
             return TypedActionResult.consume(user.getStackInHand(hand));
         } else {
-            // Player already has full health!
-            return TypedActionResult.success(user.getStackInHand(hand));
+            return TypedActionResult.pass(user.getStackInHand(hand));
         }
 
     }
