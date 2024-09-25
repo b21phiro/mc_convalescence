@@ -1,11 +1,8 @@
 package com.convalescence;
 
-import com.convalescence.mana.ManaManager;
-import com.convalescence.magic.Spells;
+import com.convalescence.spell.Spells;
 import net.fabricmc.api.ModInitializer;
 
-import net.minecraft.registry.Registries;
-import org.apache.http.config.Registry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

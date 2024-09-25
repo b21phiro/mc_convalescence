@@ -1,4 +1,4 @@
-package com.convalescence.magic;
+package com.convalescence.spell;
 
 import com.convalescence.Convalescence;
 import net.minecraft.entity.player.PlayerEntity;
@@ -10,19 +10,18 @@ import net.minecraft.world.World;
 
 public abstract class Spell extends Item {
 
+    public final int DEFAULT_MANA_COST = 10;
+
     public Spell(Settings settings) {
         super(settings);
     }
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-
         if (world.isClient) {
             return TypedActionResult.pass(user.getStackInHand(hand));
         }
-
         // Casts the spell.
         Convalescence.LOGGER.info("Cast spell");
-
         return TypedActionResult.consume(user.getStackInHand(hand));
     }
 

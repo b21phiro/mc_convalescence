@@ -1,4 +1,4 @@
-package com.convalescence.magic;
+package com.convalescence.spell;
 
 import com.convalescence.Convalescence;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
